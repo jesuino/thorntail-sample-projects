@@ -11,12 +11,41 @@
   <name>My JAX-RS Thorntail App</name>
 
   <properties>
+    <version.thorntail.plugin>4.0.0-SNAPSHOT</version.thorntail.plugin>
     <version.thorntail>2.1.0.Final</version.thorntail>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
+    <repositories>
+        <repository>
+            <!-- Enables downloading SNAPSHOT libraries -->
+            <id>oss.sonatype.org-snapshot</id>
+            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>    
+
+    <pluginRepositories>
+        <!-- Enables downloading SNAPSHOT plugins -->
+        <pluginRepository>
+            <id>oss.sonatype.org-snapshot</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
   <dependencyManagement>
     <dependencies>
@@ -29,6 +58,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  
   <dependencies>
      <dependency>
       <groupId>io.thorntail</groupId>
@@ -37,10 +67,12 @@
     <dependency>
       <groupId>io.thorntail</groupId>
       <artifactId>thorntail-testing</artifactId>
+      <version>${version.thorntail.plugin}</version>
     </dependency>
     <dependency>
       <groupId>io.thorntail</groupId>
       <artifactId>thorntail-devtools</artifactId>
+      <version>${version.thorntail.plugin}</version>
     </dependency>
   </dependencies>
 
@@ -49,7 +81,7 @@
         <plugin>
 	  <groupId>io.thorntail</groupId>
 	  <artifactId>thorntail-maven-plugin</artifactId>
-	  <version>4.0.0-SNAPSHOT</version>
+	  <version>${version.thorntail.plugin}</version>
 	  <configuration>
              <mode>thin</mode>
            </configuration>
